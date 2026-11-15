@@ -1,0 +1,21 @@
+const axios = require('axios');
+
+const BASE = 'https://rest.apicausas.xyz';
+const APIKEY = 'causa-b0ec2c842e895e70';
+
+module.exports = function(app) {
+  app.get('/download/facebook', async (req, res) => {
+    try {
+      const { url } = req.query;
+      if (!url) return res.status(400).json({ status: false, error: 'URL is required' });
+
+      const { data } = await axios.get(`${BASE}/api/v1/descargas/facebook`, {
+        params: { apikey: APIKEY, url }
+      });
+
+      res.status(200).json({ status: true, result: data });
+    } catch (error) {
+      res.status(500).json({ status: false, error: error.message });
+    }
+  });
+};
