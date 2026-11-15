@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Star API - Documentación"/>
+<meta name="monetag" content="e9b4061357128468bbeb1ad1b9fb1faa"/>
+<script>(function(s){s.dataset.zone='10650352',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10650368',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<link rel="icon" href="https://causas-files.vercel.app/fl/w3ca.png" type="image/png"/>
+<title>Star API — Documentación</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="/styles.css"/>
+<link rel="stylesheet" href="/dashboard.css"/>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="loader-wrapper">
+    <div class="loader-orbit-container">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ball b1"></div>
+      <div class="orbit-ball b2"></div>
+      <div class="orbit-ball b3"></div>
+      <div class="loader-logo">
+        <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+      </div>
+    </div>
+    <div class="loader-text">
+      <span class="loader-title">Star API</span>
+      <span class="loader-sub">Cargando...</span>
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="side-nav" id="sideNav">
+  <div class="side-nav-logo">
+    <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+    <span>Star API</span>
+    <div class="pill">v3.9</div>
+  </div>
+
+  <div class="side-user" id="sideUser">
+    <div class="side-user-avatar" id="sideAvatar">R</div>
+    <div>
+      <div class="side-user-name" id="sideUsername">Cargando...</div>
+      <div class="side-user-plan" id="sidePlan">⚡ básico</div>
+    </div>
+  </div>
+
+  <nav class="side-nav-links">
+    <div class="nav-group-label">Navegación</div>
+    <a href="/index.html" class="side-nav-link">
+      <i class="fas fa-home"></i><span>Inicio</span>
+    </a>
+    <a href="/docs.html" class="side-nav-link active">
+      <i class="fas fa-book"></i><span>Documentación</span>
+    </a>
+    <a href="/profile.html" class="side-nav-link">
+      <i class="fas fa-user"></i><span>Mi Perfil</span>
+    </a>
+    <a href="/settings.html" class="side-nav-link">
+      <i class="fas fa-cog"></i><span>Ajustes</span>
+    </a>
+
+    <div class="nav-group-label">Más</div>
+    <a href="/creator.html" class="side-nav-link">
+      <i class="fas fa-code"></i><span>Creador</span>
+    </a>
+    <a href="/plans.html" class="side-nav-link">
+      <i class="fas fa-crown"></i><span>Planes</span>
+      <span class="pill" style="margin-left:auto;font-size:.6rem">NEW</span>
+    </a>
+
+    <div class="nav-group-label">Enlaces</div>
+    <a href="https://github.com/rufinofelipe" target="_blank" class="side-nav-link">
+      <i class="fab fa-github"></i><span>GitHub</span>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-nav-link">
+      <i class="fab fa-whatsapp"></i><span>Canal WA</span>
+    </a>
+  </nav>
+
+  <div class="side-support">
+    <div class="side-support-title"><i class="fab fa-whatsapp"></i> Soporte</div>
+    <a href="https://wa.me/240222646582" target="_blank" class="side-support-item">
+      <i class="fab fa-whatsapp"></i>
+      <div><strong>Contacto directo</strong><br/>+240 222 646 582</div>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-support-item">
+      <i class="fas fa-bullhorn"></i>
+      <div><strong>Canal oficial</strong><br/>Novedades y updates</div>
+    </a>
+  </div>
+
+  <a class="side-nav-link logout-link" onclick="doLogout()">
+    <i class="fas fa-sign-out-alt"></i><span>Cerrar sesión</span>
+  </a>
+
+  <button class="collapse-btn" id="collapseBtn"><i class="fas fa-angle-left"></i></button>
+</aside>
+
+<!-- MAIN -->
+<div class="main-wrapper">
+
+  <header class="main-header">
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div class="search-wrap">
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-search"></i></span>
+        <input type="text" id="searchInput" class="form-control" placeholder="Buscar endpoint..."/>
+        <button class="clear-btn" id="clearBtn"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="bell-btn" id="bellBtn"><i class="far fa-bell"></i></button>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <section class="api-section">
+      <h2 class="section-title">Documentación <span>Completa</span></h2>
+      <p class="section-desc">Explora y prueba todos los endpoints disponibles en Star API.</p>
+      <div id="apiGrid"></div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="copyright">© 2026 Star API — Rufino. Todos los derechos reservados.</div>
+      <nav class="footer-links">
+        <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i> Canal WA</a>
+        <a href="https://wa.me/240222646582" target="_blank" class="footer-link"><i class="fas fa-envelope"></i> Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="apiModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="modalTitle">API</h3>
+          <p class="modal-desc" id="modalDesc"></p>
+        </div>
+        <button class="btn-close" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="endpoint-box">
+          <div class="box-label">
+            <span>Endpoint</span>
+            <button class="copy-btn" id="copyEndpoint"><i class="far fa-copy"></i></button>
+          </div>
+          <pre id="modalEndpoint" class="code-block"></pre>
+        </div>
+        <div id="modalParams"></div>
+        <div id="modalLoading" class="loading-box d-none">
+          <div class="loader-orbit-container" style="width:60px;height:60px">
+            <div class="orbit-ring"></div>
+            <div class="orbit-ball b1"></div>
+            <div class="orbit-ball b2"></div>
+            <div class="orbit-ball b3"></div>
+          </div>
+          <p>Procesando...</p>
+        </div>
+        <div class="response-box d-none" id="responseBox">
+          <div class="box-label">
+            <span>Respuesta</span>
+            <button class="copy-btn" id="copyResponse"><i class="far fa-copy"></i></button>
+          </div>
+          <pre id="responseContent" class="code-block"></pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="sendBtn" class="btn btn-primary d-none">
+          <span>Enviar</span><i class="fas fa-paper-plane ms-2"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast">
+    <div class="toast-header">
+      <i class="fas fa-info-circle me-2 toast-icon"></i>
+      <strong class="me-auto">Notificación</strong>
+      <button class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">Mensaje de notificación.</div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/script.js"></script>
+</body>
+</html>
