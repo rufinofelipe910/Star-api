@@ -1,0 +1,125 @@
+/* ========================
+   PROFILE.JS — Star API
+   ======================== */
+
+document.addEventListener('DOMContentLoaded', async () => {
+
+  const token = localStorage.getItem('star_token');
+  if (!token) { window.location.href = '/login.html'; return; }
+
+  // Sidebar
+  const sideNav = document.getElementById('sideNav');
+  const collapseBtn = document.getElementById('collapseBtn');
+  const menuToggle = document.getElementById('menuToggle');
+  if (collapseBtn) collapseBtn.addEventListener('click', () => sideNav.classList.toggle('collapsed'));
+  if (menuToggle) menuToggle.addEventListener('click', () => sideNav.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (sideNav && !sideNav.contains(e.target) && menuToggle && !menuToggle.contains(e.target)) {
+      sideNav.classList.remove('open');
+    }
+  });
+
+  // Cargar perfil
+  try {
+    const r = await fetch('/auth/profile', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const d = await r.json();
+
+    if (!d.status) {
+      localStorage.removeItem('star_token');
+      window.location.href = '/login.html';
+      return;
+    }
+
+    const user = d.user;
+    const limits = d.limits;
+
+    // Sidebar
+    document.getElementById('sideAvatar').textContent = user.username[0].toUpperCase();
+    document.getElementById('sideUsername').textContent = user.username;
+    document.getElementById('sidePlan').textContent = '⚡ ' + user.plan;
+
+    // Hero
+    document.getElementById('profileAvatar').textContent = user.username[0].toUpperCase();
+    document.getElementById('profileName').textContent = user.username;
+    document.getElementById('profileEmail').textContent = user.email;
+    document.getElementById('profilePlanBadge').textContent = '✨ ' + user.plan;
+    document.getElementById('profileRoleBadge').textContent = '👤 ' + user.role;
+
+    // Si tiene foto
+    if (user.avatar) {
+      document.getElementById('profileAvatar').innerHTML = `<img src="${user.avatar}" alt="Avatar"/>`;
+      document.getElementById('sideAvatar').innerHTML = `<img src="${user.avatar}" alt="Avatar"/>`;
+    }
+
+    // Info rows
+    document.getElementById('infoUsername').textContent = user.username;
+    document.getElementById('infoEmail').textContent = user.email;
+    document.getElementById('infoPlan').textContent = user.plan;
+    document.getElementById('infoRole').textContent = user.role;
+    document.getElementById('infoCreated').textContent = user.createdAt;
+
+    // API Key (oculta por defecto)
+    window._apiKey = user.apiKey;
+    document.getElementById('apikeyText').textContent = 'star-••••••••••••••••';
+
+    // Uso
+    document.getElementById('usageToday').textContent = limits.requestsToday;
+    document.getElementById('usageLimit').textContent = limits.dailyLimit;
+    document.getElementById('usageRemaining').textContent = limits.remaining;
+    document.getElementById('usageLabel').textContent = `${limits.requestsToday} / ${limits.dailyLimit} peticiones`;
+
+    const pct = limits.dailyLimit === 'Ilimitado' ? 0 :
+      Math.min(100, (limits.requestsToday / parseInt(limits.dailyLimit)) * 100);
+    document.getElementById('usageBar').style.width = pct + '%';
+    if (pct >= 90) document.getElementById('usageBar').style.background = 'linear-gradient(90deg, #ff4444, #ff6b6b)';
+    else if (pct >= 70) document.getElementById('usageBar').style.background = 'linear-gradient(90deg, var(--g), #ffaa00)';
+
+  } catch(e) {
+    showToast('Error al cargar el perfil', 'error');
+  }
+
+  setTimeout(() => {
+    const ls = document.getElementById('loadingScreen');
+    if (ls) ls.classList.add('hidden');
+  }, 800);
+
+});
+
+let keyVisible = false;
+function toggleApiKey() {
+  keyVisible = !keyVisible;
+  const el = document.getElementById('apikeyText');
+  const btn = document.getElementById('toggleKeyBtn');
+  el.textContent = keyVisible ? window._apiKey : 'star-••••••••••••••••';
+  btn.innerHTML = keyVisible ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+}
+
+function copyApiKey() {
+  if (!window._apiKey) return;
+  navigator.clipboard.writeText(window._apiKey);
+  showToast('API key copiada al portapapeles', 'success');
+}
+
+function doLogout() {
+  localStorage.removeItem('star_token');
+  localStorage.removeItem('star_user');
+  window.location.href = '/login.html';
+}
+
+function showToast(message, type = 'info') {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  const body = toast.querySelector('.toast-body');
+  const icon = toast.querySelector('.toast-icon');
+  if (body) body.textContent = message;
+  const colors = { success: 'var(--ok)', error: 'var(--err)', info: 'var(--c)' };
+  const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+  if (icon) {
+    icon.className = `toast-icon fas ${icons[type]} me-2`;
+    icon.style.color = colors[type];
+  }
+  const t = bootstrap.Toast.getInstance(toast) || new bootstrap.Toast(toast);
+  t.show();
+}
