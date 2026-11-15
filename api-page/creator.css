@@ -1,0 +1,202 @@
+/* ========================
+   CREATOR.CSS — Star API
+   ======================== */
+
+.creator-card {
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--bg2);
+  border: 1px solid var(--b);
+  border-radius: 24px;
+  padding: 36px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.creator-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 300px; height: 200px;
+  background: radial-gradient(ellipse, rgba(240,180,41,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Avatar */
+.creator-avatar-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.creator-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--g);
+  box-shadow: 0 0 28px rgba(240,180,41,.3), 0 0 0 6px rgba(240,180,41,.08);
+  display: block;
+}
+
+.creator-online-dot {
+  position: absolute;
+  bottom: 6px; right: 6px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--ok);
+  border: 3px solid var(--bg2);
+  box-shadow: 0 0 8px var(--ok);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.6;transform:scale(1.2)}
+}
+
+/* Nombre */
+.creator-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--t);
+  margin: 4px 0 0;
+  letter-spacing: -.5px;
+}
+
+/* Role badge */
+.creator-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(240,180,41,.1);
+  border: 1px solid rgba(240,180,41,.3);
+  color: var(--g);
+  font-size: .82rem;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 99px;
+}
+
+/* Status */
+.creator-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--ok);
+}
+.creator-status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 5px var(--ok);
+  animation: pulse 2s infinite;
+}
+
+/* Bio */
+.creator-bio {
+  font-size: .9rem;
+  color: var(--t2);
+  text-align: center;
+  line-height: 1.65;
+  max-width: 320px;
+}
+
+/* Skills */
+.creator-skills-title {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-top: 4px;
+}
+
+.creator-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.skill-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--b);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--t2);
+  transition: border-color .2s, color .2s;
+}
+.skill-tag:hover {
+  border-color: var(--bh);
+  color: var(--t);
+}
+
+/* Links */
+.creator-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.creator-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: .88rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  text-decoration: none;
+  transition: all .2s;
+  border: none;
+  cursor: pointer;
+}
+
+.creator-btn-wa {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+}
+.creator-btn-wa:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37,211,102,.3);
+  color: #fff;
+}
+
+.creator-btn-gh {
+  background: rgba(255,255,255,.07);
+  border: 1px solid var(--b);
+  color: var(--t);
+}
+.creator-btn-gh:hover {
+  border-color: var(--bh);
+  background: rgba(255,255,255,.12);
+  transform: translateY(-2px);
+  color: var(--t);
+}
+
+.creator-btn-ch {
+  background: rgba(0,180,255,.1);
+  border: 1px solid rgba(0,180,255,.25);
+  color: var(--c);
+}
+.creator-btn-ch:hover {
+  background: rgba(0,180,255,.18);
+  transform: translateY(-2px);
+  color: var(--c);
+}
