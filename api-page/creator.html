@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Star API - Creador"/>
+<meta name="monetag" content="e9b4061357128468bbeb1ad1b9fb1faa"/>
+<script>(function(s){s.dataset.zone='10650352',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10650368',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<link rel="icon" href="https://causas-files.vercel.app/fl/w3ca.png" type="image/png"/>
+<title>Star API — Creador</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="/styles.css"/>
+<link rel="stylesheet" href="/dashboard.css"/>
+<link rel="stylesheet" href="/creator.css"/>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="loader-wrapper">
+    <div class="loader-orbit-container">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ball b1"></div>
+      <div class="orbit-ball b2"></div>
+      <div class="orbit-ball b3"></div>
+      <div class="loader-logo">
+        <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+      </div>
+    </div>
+    <div class="loader-text">
+      <span class="loader-title">Star API</span>
+      <span class="loader-sub">Cargando...</span>
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="side-nav" id="sideNav">
+  <div class="side-nav-logo">
+    <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+    <span>Star API</span>
+    <div class="pill">v3.9</div>
+  </div>
+
+  <div class="side-user" id="sideUser">
+    <div class="side-user-avatar" id="sideAvatar">R</div>
+    <div>
+      <div class="side-user-name" id="sideUsername">Cargando...</div>
+      <div class="side-user-plan" id="sidePlan">⚡ básico</div>
+    </div>
+  </div>
+
+  <nav class="side-nav-links">
+    <div class="nav-group-label">Navegación</div>
+    <a href="/index.html" class="side-nav-link">
+      <i class="fas fa-home"></i><span>Inicio</span>
+    </a>
+    <a href="/docs.html" class="side-nav-link">
+      <i class="fas fa-book"></i><span>Documentación</span>
+    </a>
+    <a href="/profile.html" class="side-nav-link">
+      <i class="fas fa-user"></i><span>Mi Perfil</span>
+    </a>
+    <a href="/settings.html" class="side-nav-link">
+      <i class="fas fa-cog"></i><span>Ajustes</span>
+    </a>
+
+    <div class="nav-group-label">Más</div>
+    <a href="/creator.html" class="side-nav-link active">
+      <i class="fas fa-code"></i><span>Creador</span>
+    </a>
+    <a href="/plans.html" class="side-nav-link">
+      <i class="fas fa-crown"></i><span>Planes</span>
+      <span class="pill" style="margin-left:auto;font-size:.6rem">NEW</span>
+    </a>
+
+    <div class="nav-group-label">Enlaces</div>
+    <a href="https://github.com/rufinofelipe" target="_blank" class="side-nav-link">
+      <i class="fab fa-github"></i><span>GitHub</span>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-nav-link">
+      <i class="fab fa-whatsapp"></i><span>Canal WA</span>
+    </a>
+  </nav>
+
+  <div class="side-support">
+    <div class="side-support-title"><i class="fab fa-whatsapp"></i> Soporte</div>
+    <a href="https://wa.me/240222646582" target="_blank" class="side-support-item">
+      <i class="fab fa-whatsapp"></i>
+      <div><strong>Contacto directo</strong><br/>+240 222 646 582</div>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-support-item">
+      <i class="fas fa-bullhorn"></i>
+      <div><strong>Canal oficial</strong><br/>Novedades y updates</div>
+    </a>
+  </div>
+
+  <a class="side-nav-link logout-link" onclick="doLogout()">
+    <i class="fas fa-sign-out-alt"></i><span>Cerrar sesión</span>
+  </a>
+
+  <button class="collapse-btn" id="collapseBtn"><i class="fas fa-angle-left"></i></button>
+</aside>
+
+<!-- MAIN -->
+<div class="main-wrapper">
+
+  <header class="main-header">
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div class="header-title">Creador</div>
+  </header>
+
+  <main id="mainContent">
+
+    <div class="creator-card">
+
+      <!-- Avatar -->
+      <div class="creator-avatar-wrap">
+        <img
+          src="https://cdn.dev-ander.xyz/upload_1777467375073.jpg"
+          alt="Rufino"
+          class="creator-avatar"
+        />
+        <div class="creator-online-dot"></div>
+      </div>
+
+      <!-- Nombre y rol -->
+      <h2 class="creator-name">Rufino</h2>
+      <div class="creator-role-badge">
+        <i class="fas fa-code"></i> Developer
+      </div>
+
+      <!-- Estado activo -->
+      <div class="creator-status">
+        <span class="creator-status-dot"></span> Activo
+      </div>
+
+      <!-- Bio -->
+      <p class="creator-bio">
+        Creador y desarrollador principal de Star API. Si tienes dudas,
+        quieres contratar el bot o necesitas soporte, escríbeme directamente.
+      </p>
+
+      <!-- Lenguajes / Skills -->
+      <div class="creator-skills-title">Lenguajes y tecnologías</div>
+      <div class="creator-skills">
+        <div class="skill-tag">
+          <i class="fab fa-node-js" style="color:#68a063"></i> Node.js
+        </div>
+        <div class="skill-tag">
+          <i class="fab fa-js" style="color:#f7df1e"></i> JavaScript
+        </div>
+        <div class="skill-tag">
+          <i class="fab fa-python" style="color:#3776ab"></i> Python
+        </div>
+        <div class="skill-tag">
+          <i class="fab fa-html5" style="color:#e34f26"></i> HTML
+        </div>
+        <div class="skill-tag">
+          <i class="fab fa-css3-alt" style="color:#1572b6"></i> CSS
+        </div>
+        <div class="skill-tag">
+          <i class="fas fa-database" style="color:#f0b429"></i> SQLite
+        </div>
+        <div class="skill-tag">
+          <i class="fab fa-linux" style="color:#e2e8f0"></i> Linux
+        </div>
+        <div class="skill-tag">
+          <i class="fas fa-network-wired" style="color:#a78bfa"></i> Redes
+        </div>
+        <div class="skill-tag">
+          <i class="fab fa-whatsapp" style="color:#25d366"></i> WA Bots
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="creator-links">
+        <a href="https://wa.me/240222646582" target="_blank" class="creator-btn creator-btn-wa">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://github.com/rufinofelipe" target="_blank" class="creator-btn creator-btn-gh">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="creator-btn creator-btn-ch">
+          <i class="fas fa-bullhorn"></i> Canal
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="copyright">© 2026 Star API — Rufino. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/creator.js"></script>
+</body>
+</html>
