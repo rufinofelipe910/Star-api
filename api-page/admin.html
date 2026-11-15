@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Star API - Panel Admin"/>
+<link rel="icon" href="https://causas-files.vercel.app/fl/w3ca.png" type="image/png"/>
+<title>Star API — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="/styles.css"/>
+<link rel="stylesheet" href="/dashboard.css"/>
+<link rel="stylesheet" href="/admin.css"/>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="loader-wrapper">
+    <div class="loader-orbit-container">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ball b1"></div>
+      <div class="orbit-ball b2"></div>
+      <div class="orbit-ball b3"></div>
+      <div class="loader-logo">
+        <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+      </div>
+    </div>
+    <div class="loader-text">
+      <span class="loader-title">Star API</span>
+      <span class="loader-sub">Cargando panel...</span>
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="side-nav" id="sideNav">
+  <div class="side-nav-logo">
+    <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+    <span>Star API</span>
+    <div class="pill">Admin</div>
+  </div>
+
+  <div class="side-user" id="sideUser">
+    <div class="side-user-avatar" id="sideAvatar">R</div>
+    <div>
+      <div class="side-user-name" id="sideUsername">Cargando...</div>
+      <div class="side-user-plan" style="color:var(--err)">👑 admin</div>
+    </div>
+  </div>
+
+  <nav class="side-nav-links">
+    <div class="nav-group-label">Admin</div>
+    <a href="/admin.html" class="side-nav-link active">
+      <i class="fas fa-shield-alt"></i><span>Panel Admin</span>
+    </a>
+
+    <div class="nav-group-label">Navegación</div>
+    <a href="/index.html" class="side-nav-link">
+      <i class="fas fa-home"></i><span>Inicio</span>
+    </a>
+    <a href="/docs.html" class="side-nav-link">
+      <i class="fas fa-book"></i><span>Documentación</span>
+    </a>
+    <a href="/profile.html" class="side-nav-link">
+      <i class="fas fa-user"></i><span>Mi Perfil</span>
+    </a>
+    <a href="/settings.html" class="side-nav-link">
+      <i class="fas fa-cog"></i><span>Ajustes</span>
+    </a>
+  </nav>
+
+  <a class="side-nav-link logout-link" onclick="doLogout()">
+    <i class="fas fa-sign-out-alt"></i><span>Cerrar sesión</span>
+  </a>
+
+  <button class="collapse-btn" id="collapseBtn"><i class="fas fa-angle-left"></i></button>
+</aside>
+
+<!-- MAIN -->
+<div class="main-wrapper">
+
+  <header class="main-header">
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div class="header-title">Panel de Administración</div>
+    <div class="header-actions">
+      <button class="bell-btn" onclick="loadUsers()" title="Recargar">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="mainContent">
+
+    <!-- Stats por plan -->
+    <div class="admin-stats" id="adminStats">
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(255,255,255,.06);color:var(--t2)">🌱</div>
+        <div class="admin-stat-val" id="countBasico">0</div>
+        <div class="admin-stat-lbl">Básico</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(0,180,255,.1);color:var(--c)">⚡</div>
+        <div class="admin-stat-val" id="countStandard">0</div>
+        <div class="admin-stat-lbl">Standard</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(240,180,41,.1);color:var(--g)">⭐</div>
+        <div class="admin-stat-val" id="countPremium">0</div>
+        <div class="admin-stat-lbl">Premium</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(167,139,250,.1);color:#a78bfa">🚀</div>
+        <div class="admin-stat-val" id="countPro">0</div>
+        <div class="admin-stat-lbl">Pro</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(255,68,68,.1);color:var(--err)">👑</div>
+        <div class="admin-stat-val" id="countAdmin">0</div>
+        <div class="admin-stat-lbl">Admin</div>
+      </div>
+      <div class="admin-stat-card total-card">
+        <div class="admin-stat-icon" style="background:rgba(0,230,118,.1);color:var(--ok)"><i class="fas fa-users"></i></div>
+        <div class="admin-stat-val" id="countTotal">0</div>
+        <div class="admin-stat-lbl">Total</div>
+      </div>
+    </div>
+
+    <!-- Secciones por plan -->
+    <div id="planSections"></div>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="copyright">© 2026 Star API — Rufino. Panel de administración.</div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- MODAL cambiar plan -->
+<div class="admin-modal-overlay" id="planModal">
+  <div class="admin-modal">
+    <div class="admin-modal-head">
+      <div>
+        <div class="admin-modal-title">Cambiar plan</div>
+        <div class="admin-modal-sub" id="modalUsername">Usuario</div>
+      </div>
+      <button class="admin-modal-close" onclick="closePlanModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="admin-modal-body">
+      <div class="plan-options">
+        <button class="plan-opt" onclick="setPlan('basico')">
+          <span>🌱</span><span>Básico</span><small>100/día</small>
+        </button>
+        <button class="plan-opt" onclick="setPlan('standard')">
+          <span>⚡</span><span>Standard</span><small>500/día</small>
+        </button>
+        <button class="plan-opt" onclick="setPlan('premium')">
+          <span>⭐</span><span>Premium</span><small>2,000/día</small>
+        </button>
+        <button class="plan-opt" onclick="setPlan('pro')">
+          <span>🚀</span><span>Pro</span><small>10,000/día</small>
+        </button>
+        <button class="plan-opt" onclick="setPlan('admin')">
+          <span>👑</span><span>Admin</span><small>Ilimitado</small>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast">
+    <div class="toast-header">
+      <i class="fas fa-info-circle me-2 toast-icon"></i>
+      <strong class="me-auto">Admin</strong>
+      <button class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">Mensaje.</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/admin.js"></script>
+</body>
+</html>
