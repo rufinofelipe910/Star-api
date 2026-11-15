@@ -1,0 +1,18 @@
+const axios = require('axios');
+
+module.exports = function(app) {
+  app.get('/search/youtube', async (req, res) => {
+    try {
+      const { q } = req.query;
+      if (!q) return res.status(400).json({ status: false, error: 'Query is required' });
+
+      const { data } = await axios.get('https://rest.alyabotpe.xyz/search/yt', {
+        params: { query: q, key: 'stellar-GWS5mKiT' }
+      });
+
+      res.status(200).json({ status: true, result: data });
+    } catch (error) {
+      res.status(500).json({ status: false, error: error.message });
+    }
+  });
+};
