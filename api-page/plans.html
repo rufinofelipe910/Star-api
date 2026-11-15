@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Star API - Planes y Precios"/>
+<meta name="monetag" content="e9b4061357128468bbeb1ad1b9fb1faa"/>
+<script>(function(s){s.dataset.zone='10650352',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10650368',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<link rel="icon" href="https://causas-files.vercel.app/fl/w3ca.png" type="image/png"/>
+<title>Star API — Planes y Precios</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="/styles.css"/>
+<link rel="stylesheet" href="/dashboard.css"/>
+<link rel="stylesheet" href="/plans.css"/>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="loader-wrapper">
+    <div class="loader-orbit-container">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ball b1"></div>
+      <div class="orbit-ball b2"></div>
+      <div class="orbit-ball b3"></div>
+      <div class="loader-logo">
+        <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+      </div>
+    </div>
+    <div class="loader-text">
+      <span class="loader-title">Star API</span>
+      <span class="loader-sub">Cargando...</span>
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="side-nav" id="sideNav">
+  <div class="side-nav-logo">
+    <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+    <span>Star API</span>
+    <div class="pill">v3.9</div>
+  </div>
+
+  <div class="side-user" id="sideUser">
+    <div class="side-user-avatar" id="sideAvatar">R</div>
+    <div>
+      <div class="side-user-name" id="sideUsername">Cargando...</div>
+      <div class="side-user-plan" id="sidePlan">⚡ básico</div>
+    </div>
+  </div>
+
+  <nav class="side-nav-links">
+    <div class="nav-group-label">Navegación</div>
+    <a href="/index.html" class="side-nav-link">
+      <i class="fas fa-home"></i><span>Inicio</span>
+    </a>
+    <a href="/docs.html" class="side-nav-link">
+      <i class="fas fa-book"></i><span>Documentación</span>
+    </a>
+    <a href="/profile.html" class="side-nav-link">
+      <i class="fas fa-user"></i><span>Mi Perfil</span>
+    </a>
+    <a href="/settings.html" class="side-nav-link">
+      <i class="fas fa-cog"></i><span>Ajustes</span>
+    </a>
+
+    <div class="nav-group-label">Más</div>
+    <a href="/creator.html" class="side-nav-link">
+      <i class="fas fa-code"></i><span>Creador</span>
+    </a>
+    <a href="/plans.html" class="side-nav-link active">
+      <i class="fas fa-crown"></i><span>Planes</span>
+      <span class="pill" style="margin-left:auto;font-size:.6rem">NEW</span>
+    </a>
+
+    <div class="nav-group-label">Enlaces</div>
+    <a href="https://github.com/rufinofelipe" target="_blank" class="side-nav-link">
+      <i class="fab fa-github"></i><span>GitHub</span>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-nav-link">
+      <i class="fab fa-whatsapp"></i><span>Canal WA</span>
+    </a>
+  </nav>
+
+  <div class="side-support">
+    <div class="side-support-title"><i class="fab fa-whatsapp"></i> Soporte</div>
+    <a href="https://wa.me/240222646582" target="_blank" class="side-support-item">
+      <i class="fab fa-whatsapp"></i>
+      <div><strong>Contacto directo</strong><br/>+240 222 646 582</div>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-support-item">
+      <i class="fas fa-bullhorn"></i>
+      <div><strong>Canal oficial</strong><br/>Novedades y updates</div>
+    </a>
+  </div>
+
+  <a class="side-nav-link logout-link" onclick="doLogout()">
+    <i class="fas fa-sign-out-alt"></i><span>Cerrar sesión</span>
+  </a>
+
+  <button class="collapse-btn" id="collapseBtn"><i class="fas fa-angle-left"></i></button>
+</aside>
+
+<!-- MAIN -->
+<div class="main-wrapper">
+
+  <header class="main-header">
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div class="header-title">Planes y Precios</div>
+  </header>
+
+  <main id="mainContent">
+
+    <div class="plans-header">
+      <h2 class="plans-title">Elige tu <span>plan</span></h2>
+      <p class="plans-sub">Comienza gratis y escala según necesites. Sin sorpresas.</p>
+    </div>
+
+    <!-- Tu plan actual -->
+    <div class="current-plan-banner" id="currentPlanBanner">
+      <i class="fas fa-crown"></i>
+      <span>Tu plan actual: <strong id="currentPlanName">básico</strong></span>
+    </div>
+
+    <!-- Cards de planes -->
+    <div class="plans-grid">
+
+      <!-- Básico -->
+      <div class="plan-card" id="plan-basico">
+        <div class="plan-icon">🌱</div>
+        <div class="plan-name">Básico</div>
+        <div class="plan-price">Gratis</div>
+        <div class="plan-period">Para siempre</div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> 100 peticiones / día</li>
+          <li><i class="fas fa-check"></i> Acceso a todos los endpoints</li>
+          <li><i class="fas fa-check"></i> API key personal</li>
+          <li><i class="fas fa-check"></i> Soporte por canal</li>
+          <li class="disabled"><i class="fas fa-times"></i> Soporte prioritario</li>
+          <li class="disabled"><i class="fas fa-times"></i> Endpoints exclusivos</li>
+        </ul>
+        <a href="https://wa.me/240222646582" target="_blank" class="plan-btn plan-btn-outline">
+          Plan actual
+        </a>
+      </div>
+
+      <!-- Standard -->
+      <div class="plan-card" id="plan-standard">
+        <div class="plan-icon">⚡</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">$2<span>/mes</span></div>
+        <div class="plan-period">Facturación mensual</div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> 500 peticiones / día</li>
+          <li><i class="fas fa-check"></i> Acceso a todos los endpoints</li>
+          <li><i class="fas fa-check"></i> API key personal</li>
+          <li><i class="fas fa-check"></i> Soporte por canal</li>
+          <li><i class="fas fa-check"></i> Soporte prioritario</li>
+          <li class="disabled"><i class="fas fa-times"></i> Endpoints exclusivos</li>
+        </ul>
+        <a href="https://wa.me/240222646582?text=Quiero%20el%20plan%20Standard" target="_blank" class="plan-btn plan-btn-blue">
+          <i class="fab fa-whatsapp"></i> Contratar
+        </a>
+      </div>
+
+      <!-- Premium -->
+      <div class="plan-card plan-featured" id="plan-premium">
+        <div class="plan-popular">⭐ Más popular</div>
+        <div class="plan-icon">⭐</div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">$5<span>/mes</span></div>
+        <div class="plan-period">Facturación mensual</div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> 2,000 peticiones / día</li>
+          <li><i class="fas fa-check"></i> Acceso a todos los endpoints</li>
+          <li><i class="fas fa-check"></i> API key personal</li>
+          <li><i class="fas fa-check"></i> Soporte prioritario</li>
+          <li><i class="fas fa-check"></i> Endpoints exclusivos</li>
+          <li><i class="fas fa-check"></i> Acceso anticipado</li>
+        </ul>
+        <a href="https://wa.me/240222646582?text=Quiero%20el%20plan%20Premium" target="_blank" class="plan-btn plan-btn-gold">
+          <i class="fab fa-whatsapp"></i> Contratar
+        </a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card" id="plan-pro">
+        <div class="plan-icon">🚀</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$10<span>/mes</span></div>
+        <div class="plan-period">Facturación mensual</div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> 10,000 peticiones / día</li>
+          <li><i class="fas fa-check"></i> Acceso a todos los endpoints</li>
+          <li><i class="fas fa-check"></i> API key personal</li>
+          <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
+          <li><i class="fas fa-check"></i> Endpoints exclusivos</li>
+          <li><i class="fas fa-check"></i> Acceso anticipado</li>
+        </ul>
+        <a href="https://wa.me/240222646582?text=Quiero%20el%20plan%20Pro" target="_blank" class="plan-btn plan-btn-purple">
+          <i class="fab fa-whatsapp"></i> Contratar
+        </a>
+      </div>
+
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h3 class="faq-title">Preguntas frecuentes</h3>
+      <div class="faq-list">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span>¿Cómo contrato un plan?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Escríbeme directamente por WhatsApp al +240 222 646 582. Te indicaré los métodos de pago disponibles y activaré tu plan en menos de 24 horas.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span>¿Los límites se resetean cada día?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Sí, los contadores de peticiones se resetean automáticamente cada día a medianoche.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span>¿Puedo cambiar de plan en cualquier momento?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Sí, puedes subir o bajar de plan cuando quieras contactando por WhatsApp.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span>¿Qué métodos de pago aceptan?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Consulta los métodos disponibles directamente por WhatsApp, ya que pueden variar según tu país.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="copyright">© 2026 Star API — Rufino. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/plans.js"></script>
+</body>
+</html>
