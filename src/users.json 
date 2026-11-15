@@ -1,0 +1,14 @@
+[
+  {
+    "id": "admin001",
+    "username": "Rufino",
+    "email": "rufinofelipe910@gmail.com",
+    "password": "rufinofelipe15",
+    "apiKey": "star-admin-rufinof3l1p3",
+    "plan": "admin",
+    "role": "admin",
+    "requestsToday": 0,
+    "lastReset": "2026-04-28",
+    "createdAt": "2026-04-28"
+  }
+]
