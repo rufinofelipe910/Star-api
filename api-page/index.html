@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Star API - Dashboard"/>
+<meta name="monetag" content="e9b4061357128468bbeb1ad1b9fb1faa"/>
+<script>(function(s){s.dataset.zone='10650352',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10650368',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<link rel="icon" href="https://causas-files.vercel.app/fl/w3ca.png" type="image/png"/>
+<title>Star API — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="/styles.css"/>
+<link rel="stylesheet" href="/dashboard.css"/>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="loader-wrapper">
+    <div class="loader-orbit-container">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ball b1"></div>
+      <div class="orbit-ball b2"></div>
+      <div class="orbit-ball b3"></div>
+      <div class="loader-logo">
+        <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+      </div>
+    </div>
+    <div class="loader-text">
+      <span class="loader-title">Star API</span>
+      <span class="loader-sub">Cargando...</span>
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="side-nav" id="sideNav">
+  <div class="side-nav-logo">
+    <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Logo"/>
+    <span>Star API</span>
+    <div class="pill">v3.9</div>
+  </div>
+
+  <!-- Usuario -->
+  <div class="side-user" id="sideUser">
+    <div class="side-user-avatar" id="sideAvatar">R</div>
+    <div>
+      <div class="side-user-name" id="sideUsername">Cargando...</div>
+      <div class="side-user-plan" id="sidePlan">⚡ básico</div>
+    </div>
+  </div>
+
+  <nav class="side-nav-links">
+    <div class="nav-group-label">Navegación</div>
+    <a href="/index.html" class="side-nav-link active">
+      <i class="fas fa-home"></i><span>Inicio</span>
+    </a>
+    <a href="/docs.html" class="side-nav-link">
+      <i class="fas fa-book"></i><span>Documentación</span>
+    </a>
+    <a href="/profile.html" class="side-nav-link">
+      <i class="fas fa-user"></i><span>Mi Perfil</span>
+    </a>
+    <a href="/settings.html" class="side-nav-link">
+      <i class="fas fa-cog"></i><span>Ajustes</span>
+    </a>
+
+    <div class="nav-group-label">Más</div>
+    <a href="/creator.html" class="side-nav-link">
+      <i class="fas fa-code"></i><span>Creador</span>
+    </a>
+    <a href="/plans.html" class="side-nav-link">
+      <i class="fas fa-crown"></i><span>Planes</span>
+      <span class="pill" style="margin-left:auto;font-size:.6rem">NEW</span>
+    </a>
+
+    <div class="nav-group-label">Enlaces</div>
+    <a href="https://github.com/rufinofelipe" target="_blank" class="side-nav-link">
+      <i class="fab fa-github"></i><span>GitHub</span>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-nav-link">
+      <i class="fab fa-whatsapp"></i><span>Canal WA</span>
+    </a>
+  </nav>
+
+  <!-- Soporte -->
+  <div class="side-support">
+    <div class="side-support-title"><i class="fab fa-whatsapp"></i> Soporte</div>
+    <a href="https://wa.me/240222646582" target="_blank" class="side-support-item">
+      <i class="fab fa-whatsapp"></i>
+      <div><strong>Contacto directo</strong><br/>+240 222 646 582</div>
+    </a>
+    <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="side-support-item">
+      <i class="fas fa-bullhorn"></i>
+      <div><strong>Canal oficial</strong><br/>Novedades y updates</div>
+    </a>
+  </div>
+
+  <a class="side-nav-link logout-link" onclick="doLogout()">
+    <i class="fas fa-sign-out-alt"></i><span>Cerrar sesión</span>
+  </a>
+
+  <button class="collapse-btn" id="collapseBtn"><i class="fas fa-angle-left"></i></button>
+</aside>
+
+<!-- MAIN -->
+<div class="main-wrapper">
+
+  <header class="main-header">
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div class="header-title">Dashboard</div>
+    <div class="header-actions">
+      <button class="bell-btn" id="bellBtn"><i class="far fa-bell"></i></button>
+    </div>
+  </header>
+
+  <main id="mainContent">
+
+    <!-- Bienvenida del usuario -->
+    <div class="welcome-card" id="welcomeCard">
+      <div class="welcome-avatar" id="welcomeAvatar">R</div>
+      <div class="welcome-text">
+        <h2 id="welcomeMsg">¡Hola! 👋</h2>
+        <p id="welcomeEmail">cargando...</p>
+        <div class="welcome-plan" id="welcomePlan">✨ básico</div>
+      </div>
+    </div>
+
+    <!-- Estado del sistema -->
+    <div class="status-banner">
+      <span class="status-dot"></span>
+      <span><strong>Todos los sistemas operativos</strong> — Star API está funcionando con normalidad.</span>
+    </div>
+
+    <!-- Stats de uso -->
+    <div class="dash-stats">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon" style="background:rgba(0,180,255,.12);color:var(--c)">
+          <i class="fas fa-paper-plane"></i>
+        </div>
+        <div>
+          <div class="dash-stat-val" id="statToday">0</div>
+          <div class="dash-stat-lbl">Peticiones hoy</div>
+        </div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon" style="background:rgba(240,180,41,.12);color:var(--g)">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <div>
+          <div class="dash-stat-val" id="statLimit">100</div>
+          <div class="dash-stat-lbl">Límite diario</div>
+        </div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon" style="background:rgba(0,230,118,.12);color:var(--ok)">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div>
+          <div class="dash-stat-val" id="statRemaining">100</div>
+          <div class="dash-stat-lbl">Restantes</div>
+        </div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon" style="background:rgba(167,139,250,.12);color:#a78bfa">
+          <i class="fas fa-crown"></i>
+        </div>
+        <div>
+          <div class="dash-stat-val" id="statPlan">básico</div>
+          <div class="dash-stat-lbl">Plan actual</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de uso -->
+    <div class="usage-card">
+      <div class="usage-card-head">
+        <span><i class="fas fa-chart-line"></i> Uso del día</span>
+        <span id="usageText" style="color:var(--t2);font-size:.85rem">0 / 100</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="usageBar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Presentación de Star API -->
+    <div class="about-section">
+      <div class="about-header">
+        <img src="https://causas-files.vercel.app/fl/w3ca.png" alt="Star API" class="about-logo"/>
+        <div>
+          <h3 class="about-title">Somos <span>Star ✨ API</span></h3>
+          <p class="about-version">v3.9.0 — En constante desarrollo</p>
+        </div>
+      </div>
+      <p class="about-desc">
+        Una API en constante desarrollo y crecimiento, diseñada especialmente para bots de WhatsApp.
+        Ofrecemos endpoints rápidos, estables y fáciles de integrar para que tu bot sea más poderoso.
+      </p>
+      <div class="about-features">
+        <div class="about-feature">
+          <i class="fas fa-bolt" style="color:var(--g)"></i>
+          <div>
+            <strong>Rápida y estable</strong>
+            <span>Respuestas en milisegundos</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-plug" style="color:var(--c)"></i>
+          <div>
+            <strong>Fácil integración</strong>
+            <span>Compatible con cualquier bot</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-shield-alt" style="color:var(--ok)"></i>
+          <div>
+            <strong>Segura</strong>
+            <span>Autenticación por API key</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-sync-alt" style="color:#a78bfa"></i>
+          <div>
+            <strong>Siempre actualizada</strong>
+            <span>Nuevos endpoints cada semana</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="/docs.html" class="hero-btn"><i class="fas fa-book"></i> Ver documentación</a>
+        <a href="https://wa.me/240222646582" target="_blank" class="hero-btn hero-btn-wa"><i class="fab fa-whatsapp"></i> Contactar</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="copyright">© 2026 Star API — Rufino. Todos los derechos reservados.</div>
+      <nav class="footer-links">
+        <a href="https://whatsapp.com/channel/0029Vb7yiF1I7BeC4d3Wbp1K" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i> Canal WA</a>
+        <a href="https://wa.me/240222646582" target="_blank" class="footer-link"><i class="fas fa-envelope"></i> Contacto</a>
+      </nav>
+    </div>
+    <div class="owner-card">
+      <div class="owner-avatar">R</div>
+      <div><div class="owner-name">Rufino</div><div class="owner-role">Dueño de la API</div></div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast">
+    <div class="toast-header">
+      <i class="fas fa-info-circle me-2 toast-icon"></i>
+      <strong class="me-auto">Notificación</strong>
+      <button class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">Mensaje de notificación.</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/dashboard.js"></script>
+</body>
+</html>
